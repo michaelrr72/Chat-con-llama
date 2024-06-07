@@ -9,7 +9,7 @@ $(document).ready(function () {
                 url: "http://localhost:11434/api/generate",
                 type: "POST",
                 dataType: "json",
-                data: JSON.stringify({model:"llama2", stream:false, prompt: userInput}),
+                data: JSON.stringify({model:"llama3", stream:false, prompt: userInput}),
                 contentType: "application/json",
                 success: function (data) {
                     // Añadir la respuesta del modelo al historial del chat
@@ -18,6 +18,11 @@ $(document).ready(function () {
                     $("#txt-buscar").val('');
                     // Hacer scroll hacia abajo para ver el último mensaje
                     $("#chat-historial").scrollTop($("#chat-historial")[0].scrollHeight);
+                },
+                error: function (xhr, status, error) {
+                    // Manejo de errores
+                    console.error("Error en la solicitud:", status, error);
+                    $("#chat-historial").append('<div class="text-left text-danger"><strong>Error:</strong> No se pudo obtener una respuesta del servidor.</div>');
                 }
             });
         }
