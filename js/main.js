@@ -9,7 +9,7 @@ $(document).ready(function () {
                 url: "http://localhost:11434/api/generate",
                 type: "POST",
                 dataType: "json",
-                data: JSON.stringify({model:"llama3", stream:false, prompt: userInput}),
+                data: JSON.stringify({model:"llama2", stream:false, prompt: userInput}),
                 contentType: "application/json",
                 success: function (data) {
                     // Añadir la respuesta del modelo al historial del chat
